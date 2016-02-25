@@ -2,6 +2,7 @@ package com.kb;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.jdt.core.dom.ASTNode;
@@ -68,5 +69,16 @@ public class GraphUtils {
 	            dwgb.addEdge(src, target, w);
 	        }
 	        return dwgb.build();
-	    }
+	 }
+
+	public void getNamedDirectedGraphs(Map<String, NamedDirectedGraph> instances, List<NamedDirectedGraph> graphs) {
+		for (NamedDirectedGraph g : graphs) {
+			instances.put(
+					g.getId(),
+					new NamedDirectedGraph(g, g.getId(), g.getLabel(), g
+							.getSeedName(), g.getMethodName(), g
+							.getParamTypes()));
+//				i++;
+		}
+	}
 }

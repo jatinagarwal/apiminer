@@ -118,21 +118,15 @@ public class Main {
 
 		Map<String, NamedDirectedGraph> instances = new HashMap<String, NamedDirectedGraph>();
 		for (String fileContent : sourceFiles) {
-			
 			List<NamedDirectedGraph> graphs = graphUtils.getGraphsFromFile(
 					fileContent, FILTERED_STRING);
-			Integer i = 0;
-			for (NamedDirectedGraph g : graphs) {
-				instances.put(
-						g.getId(),
-						new NamedDirectedGraph(g, g.getId(), g.getLabel(), g
-								.getSeedName(), g.getMethodName(), g
-								.getParamTypes()));
-				i++;
-			}
+//			Integer i = 0;
+			graphUtils.getNamedDirectedGraphs(instances, graphs);
 		}
 		return instances;
 	}
+
+
 
 	private static void findJavaFiles(File file, List<File> files)
 			throws IOException {
